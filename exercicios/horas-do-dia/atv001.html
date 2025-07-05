@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hora do dia</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+
+        header h1 {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            color: black;
+            height: 300px;
+            width: 400px;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Hora do Dia </h1>
+    </header>
+    
+    <section>
+        <div id="horas">
+            <p id="horario"> </p>
+        </div>
+        <div id="foto">
+            
+        </div>
+    </section>
+
+    <footer>
+        <p> &copy; Cursoemvideo </p>
+    </footer>
+
+    <script>
+        var agora = new Date()
+        var horas = agora.getHours()
+        document.getElementById('horario').innerHTML = `Agora são ${horas} horas.`
+
+        var imagem = document.getElementById('foto')
+        if (horas >= 5 && horas <= 12) {
+            imagem.innerHTML = '<img src="amanhecer.jpg" alt="de manha">'
+        } else if (horas >= 13 && horas <= 18) {
+            imagem.innerHTML = '<img src="entardecer.jpg" alt="de tarde" width="200px" height="200px">'
+        } else {
+            imagem.innerHTML = '<img src="noite.jpg" alt="de noite">'
+        }
+    </script>
+    
+</body>
+</html>

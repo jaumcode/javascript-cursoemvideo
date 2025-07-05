@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Nacionalidade </title>
+</head>
+<body>
+    <h1> Qual a sua nacionalidade? </h1>
+    <input type="text" name="txtpais" id="txtpais">
+    <input type="button" value="verificar" onclick="nacao()">
+    <div id="res"> </div>
+    <script>
+        function nacao() {
+            var p = document.getElementById('txtpais')
+            var v = document.getElementById('res')
+            var valor = p.value.toLowerCase().trim() //tolowercase é para usar letras maiusculas e minusculas e o trim para os espaços serem desconsiderados
+            if (valor == 'brasil'){
+                v.innerHTML = 'Você é brasileiro'
+            } else {
+                v.innerHTML = 'Você é estrangeiro'
+            }
+        }
+    </script>
+</body>
+</html>

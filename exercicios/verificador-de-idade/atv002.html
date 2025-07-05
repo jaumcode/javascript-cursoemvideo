@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de idade</title>
+    <style>
+        body {
+            background-color: rgb(88, 88, 241);
+        }
+
+        header h1 {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            padding: 10px;
+            width: 500px;
+            height: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Verificador de Idade </h1>
+    </header>
+
+    <section>
+        <p> Ano de Nascimento:  
+            <input type="number" name="anotxt" id="anotxt">
+        </p>
+        <p> Sexo:
+            <input type="radio" name="sexo" id="smasc" value="masculino" checked> masculino
+            <input type="radio" name="sexo" id="sfem" value="feminino" checked> feminino
+        </p>
+        <input type="button" value="verificar" onclick="verificar()">
+        <p id="dados"> Preencha os dados acima para ver o resultado! </p>
+        <div id="foto"> </div>
+    </section>
+
+    <script> // ainda tem um erro básico de lógica, mas to com preguiça de arrumar.
+        function verificar() {
+            var anoNasc = document.getElementById('anotxt').value
+
+            if (anoNasc.trim() === '') {
+                window.alert('Ano de nascimento vazio')
+                document.getElementById('dados').innerHTML = `Ano de nascimento vazio`      
+            } else {
+                var anoNasc = parseInt(document.getElementById('anotxt').value)
+            }
+
+            var sexo = document.querySelector('input[name="sexo"]:checked').value
+            var anoAtual = new Date().getFullYear()
+            var idade = anoAtual - anoNasc
+
+            if (sexo == 'masculino') {
+                sexo = 'homem'
+            } else {
+                sexo = 'mulher'
+            }
+
+            document.getElementById('dados').innerHTML = `Detectamos um ${sexo} com ${idade} anos.`
+
+            var imagem = document.getElementById('foto')
+            if ( anoNasc > anoAtual) {
+                window.alert('Ano de nascimento invalido')
+                document.getElementById('dados').innerHTML = `Ano de nascimento invalido`
+            } else {
+                if (idade <= 49 && sexo == 'homem') {
+                    imagem.innerHTML = '<img src="jovemh.jpg" alt="de tarde" width="200px" height="200px">'
+                } else if (idade <= 49 && sexo == 'mulher') {
+                    imagem.innerHTML = '<img src="jovemm.jpg" alt="de tarde" width="200px" height="200px">'
+                } else if (idade >= 50 && sexo == 'homem') {
+                    imagem.innerHTML = '<img src="idosoh.jpg" alt="de tarde" width="200px" height="200px">'
+                } else {
+                    imagem.innerHTML = '<img src="idosam.jpg" alt="de tarde" width="200px" height="200px">'
+                }
+            }
+        }
+    </script>
+</body>
+</html>
