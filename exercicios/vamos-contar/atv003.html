@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Vamos contar </title>
+    <style>
+        body {
+            background-color: rgb(88, 88, 241);
+        }
+
+        header h1 {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            padding: 10px;
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Vamos contar </h1>
+    </header>
+
+    <section>
+        <p> Início:  
+            <input type="number" name="inicio" id="inicio">
+        </p>
+        <p> Fim:  
+            <input type="number" name="fim" id="fim">
+        </p>
+        <p> Passo:  
+            <input type="number" name="passo" id="passo">
+        </p>
+        
+        <input type="button" value="contar" onclick="contar()">
+        <p id="dados"> Preparando a contagem </p>
+    </section>
+
+    <script>
+        function contar() { //não fiz da forma correta, mas segui o proposito
+            var inicio = document.getElementById('inicio').value
+            var fim = document.getElementById('fim').value
+            var passo = document.getElementById('passo').value
+            var res = document.getElementById('dados')
+            res.innerHTML = ` `
+
+            if (inicio.trim() === '' || fim.trim() === '') {
+                res.innerHTML = `Impossível contar `
+            } else {
+                var ninicio = Number(inicio)
+                var nfim = Number(fim)
+            } 
+
+            if (passo == 0 || passo.trim() === '' ) {
+                passo = 1;
+                window.alert('Campo passo vazio, será considerado o passo 1')
+            }
+            var npasso = Number(passo)
+
+            for (var c = ninicio; c <= nfim; c = c + npasso) {
+                res.innerHTML += `${c} \u{1F449}`
+            }
+            res.innerHTML += ` 🏁`
+        }
+    </script>
+</body>
+</html>

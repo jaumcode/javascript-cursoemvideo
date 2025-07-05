@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Tabuada </title>
+    <style>
+        body {
+            background-color: rgb(88, 88, 241);
+        }
+
+        header h1 {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            padding: 10px;
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        textarea {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Tabuada </h1>
+    </header>
+
+    <section>
+        <p> Número:  
+            <input type="number" name="num" id="num">
+            <input type="button" value="contar" onclick="tabular()">
+        </p>
+        
+        <textarea id="mensagem" name="mensagem" rows="12" cols="15" placeholder="Digite seu número"> </textarea>
+    </section>
+    
+    <script>
+        function tabular() { //este ta até certinho
+            var n = document.getElementById('num').value
+            if (n.trim() === '') {
+                window.alert ('Não foi possível executar')
+            } else {
+                n = Number(n)
+                var c = Number(1)
+                var res = document.getElementById('mensagem') 
+                res.innerHTML = ''
+
+                while (c != 11) {
+                res.innerHTML += `${n} x ${c} = ${n * c}\n`
+                c++
+                }
+            }
+        }
+    </script>
+</body>
+</html>
